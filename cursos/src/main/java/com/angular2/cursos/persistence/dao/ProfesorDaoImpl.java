@@ -40,5 +40,20 @@ public class ProfesorDaoImpl implements ProfesorDao{
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
+
+
+
+	@Override
+	public void insert(Profesor profesor) {
+		entityManager.persist(profesor);
+		
+	}
+
+
+
+	@Override
+	public Profesor selectById(long id) {
+		return entityManager.find(Profesor.class, id);
+	}
 	
 }

@@ -42,4 +42,9 @@ public class CursoDaoImpl implements CursoDao{
 		this.entityManager = entityManager;
 	}
 
+	@Override
+	public Curso selectById(long id) {
+		return entityManager.find(Curso.class, id);
+	}
+
 }

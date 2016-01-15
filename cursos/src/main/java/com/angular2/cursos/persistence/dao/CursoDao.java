@@ -8,6 +8,8 @@ public interface CursoDao {
 
 	public void insert(Curso curso);
 	
+	public Curso selectById(long id);
+	
 	public List<Curso> selectAll();
 	
 }
