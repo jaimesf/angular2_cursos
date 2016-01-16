@@ -8,7 +8,6 @@ public interface ProfesorDao {
 
 	public void insert(Profesor profesor);
 	
-	public Profesor selectById(long id);
 	
 	public List<Profesor> selectAll();
 	

@@ -14,13 +14,10 @@ import com.angular2.cursos.persistence.model.Profesor;
 
 @Repository("profesorDao")
 @Transactional(propagation = Propagation.REQUIRED)
-public class ProfesorDaoImpl implements ProfesorDao{
+public class ProfesorDaoImpl implements ProfesorDao {
 
-	
 	@PersistenceContext
 	private EntityManager entityManager;
-
-	
 
 	@Transactional
 	public List<Profesor> selectAll() {
@@ -29,31 +26,18 @@ public class ProfesorDaoImpl implements ProfesorDao{
 		return profesores;
 	}
 
-
-
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
-
-
 
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 
-
-
 	@Override
 	public void insert(Profesor profesor) {
 		entityManager.persist(profesor);
-		
+
 	}
 
-
-
-	@Override
-	public Profesor selectById(long id) {
-		return entityManager.find(Profesor.class, id);
-	}
-	
 }
