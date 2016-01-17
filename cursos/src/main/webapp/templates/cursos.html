@@ -1,0 +1,27 @@
+<header class="container">
+	<h2>Catálogo de cursos</h2>
+</header>
+<div class="container">
+
+	<div class="row border-inside">
+		<div class="col-sm-12 border-container">
+			<table border="1">
+				<tr><th>Título</th><th>Nivel</th><th>Horas</th><th>Profesor</th></tr>
+				<tr *ngFor="#curso of cursos">
+					<td>{{curso.titulo}}</td>
+					<td>{{curso.nivel}}</td>
+					<td>{{curso.horas}}</td>
+					<td>{{curso.profesor.nombreApellidos}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 border-container">Paginacion</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<button href="nuevocurso" class="btn btn-success" title="Nuevo Curso" (click)="newCurso()">
+				Nuevo Curso</button>
+		</div>
+	</div>

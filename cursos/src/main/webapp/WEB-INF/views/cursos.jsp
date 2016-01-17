@@ -1,31 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Catálogo de cursos</title>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/estilos.css">
-</head>
-<body>
-	<header class="container">
-	<h2>Catálogo de cursos</h2>
-	</header>
-	<div class="container">
+  <head>
+    <title>Angular 2 QuickStart</title>
 
-		<div class="row border-inside">
-			<div class="col-sm-12 border-container">Tabla</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 border-container">Paginacion</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<a href="nuevocurso" class="btn btn-success" title="Nuevo Curso">
-					Nuevo Curso</a>
-			</div>
-		</div>
-</body>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilos.css">
+
+    <!-- 1. Load libraries -->
+    <script src="js/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="js/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="js/node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="js/node_modules/angular2/bundles/angular2.dev.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+        System.config({
+          packages: {
+            js: {
+              format: 'register',
+              defaultExtension: 'js'
+            }
+          }
+        });
+        System.import('js/bootcursos')
+              .then(null, console.error.bind(console));
+      </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+    <cursos-activos>Loading...</cursos-activos>
+  </body>
+
 </html>

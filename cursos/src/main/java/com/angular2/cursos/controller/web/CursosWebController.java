@@ -13,10 +13,7 @@ public class CursosWebController {
 		return "cursos";
 	}
 	
-	@RequestMapping(value = "/nuevocurso", method = RequestMethod.GET)
-	public String nuevoCurso(ModelMap model) {
-		return "nuevocurso";
-	}
+	
 	
 	
 }
