@@ -6,7 +6,7 @@
   <head>
     <title>Angular 2 QuickStart</title>
 
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/estilos.css">
 
     <!-- 1. Load libraries -->
@@ -14,6 +14,7 @@
     <script src="js/node_modules/systemjs/dist/system.src.js"></script>
     <script src="js/node_modules/rxjs/bundles/Rx.js"></script>
     <script src="js/node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="js/node_modules/ng2-table/ng2-table.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>

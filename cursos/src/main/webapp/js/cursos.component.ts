@@ -1,6 +1,14 @@
 import {Component} from 'angular2/core';
+import {NgClass} from 'angular2/common';
 import {NuevoCursoComponent} from './nuevocurso.component'
 import {bootstrap}    from 'angular2/platform/browser'
+
+
+
+
+import {TableDemo} from './table.component';
+
+
 
 interface Profesor {
   id: number;
@@ -13,7 +21,7 @@ interface Curso {
   titulo: string;
   nivel: string;
   horas: number;
-  activo: number;
+  activo: boolean;
   profesor: Profesor;
 }
 
@@ -23,26 +31,21 @@ interface Curso {
 
 @Component({
     selector: 'cursos-activos',
-    templateUrl: 'templates/cursos.html'
+    templateUrl: 'templates/cursos.html',
+    directives: [
+    	TableDemo
+  ]
     
 })
 export class CursosComponent {
-	public cursos = CURSOS;
+	
+	
+	
 	
 	newCurso() {bootstrap(NuevoCursoComponent);  }
+	
 
  }
 
-var CURSOS: Curso[] = [
-  { "id": 1, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 2, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 3, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 4, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 5, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 6, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 7, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 8, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-  { "id": 9, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1 , "profesor": { "id":1, "nombreApellidos": "Uno"} },
-];
 
 export default Curso;

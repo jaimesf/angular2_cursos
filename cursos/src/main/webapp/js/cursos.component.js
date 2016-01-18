@@ -1,4 +1,4 @@
-System.register(['angular2/core', './nuevocurso.component', 'angular2/platform/browser'], function(exports_1) {
+System.register(['angular2/core', './nuevocurso.component', 'angular2/platform/browser', './table.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(['angular2/core', './nuevocurso.component', 'angular2/platform/b
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, nuevocurso_component_1, browser_1;
-    var CursosComponent, CURSOS;
+    var core_1, nuevocurso_component_1, browser_1, table_component_1;
+    var CursosComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -20,34 +20,28 @@ System.register(['angular2/core', './nuevocurso.component', 'angular2/platform/b
             },
             function (browser_1_1) {
                 browser_1 = browser_1_1;
+            },
+            function (table_component_1_1) {
+                table_component_1 = table_component_1_1;
             }],
         execute: function() {
             CursosComponent = (function () {
                 function CursosComponent() {
-                    this.cursos = CURSOS;
                 }
                 CursosComponent.prototype.newCurso = function () { browser_1.bootstrap(nuevocurso_component_1.NuevoCursoComponent); };
                 CursosComponent = __decorate([
                     core_1.Component({
                         selector: 'cursos-activos',
-                        templateUrl: 'templates/cursos.html'
+                        templateUrl: 'templates/cursos.html',
+                        directives: [
+                            table_component_1.TableDemo
+                        ]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CursosComponent);
                 return CursosComponent;
             })();
             exports_1("CursosComponent", CursosComponent);
-            CURSOS = [
-                { "id": 1, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 2, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 3, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 4, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 5, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 6, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 7, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 8, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-                { "id": 9, "titulo": "Mr. Nice", "nivel": "alto", "horas": 23, "activo": 1, "profesor": { "id": 1, "nombreApellidos": "Uno" } },
-            ];
         }
     }
 });
