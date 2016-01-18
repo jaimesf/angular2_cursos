@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', './nuevocurso.component', './cursos.service', 'angular2/platform/browser', './node_modules/ng2-bootstrap/ng2-bootstrap', './node_modules/ng2-table/ng2-table'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', './nuevocurso.component', './cursos.service', 'angular2/platform/browser', 'ng2-bootstrap/ng2-bootstrap', 'ng2-table/ng2-table'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,7 +35,8 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
             }],
         execute: function() {
             TableDemo = (function () {
-                function TableDemo() {
+                function TableDemo(_cursosService) {
+                    this._cursosService = _cursosService;
                     this.rows = [];
                     this.columns = [
                         { title: 'Titulo', name: 'titulo', sort: 'asc' },
@@ -55,7 +56,8 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                     this.length = this.data.length;
                 }
                 TableDemo.prototype.getCursos = function () {
-                    //this._cursosService.getCursos().then(cursos => this.data = cursos);
+                    var _this = this;
+                    this._cursosService.getCursos().then(function (cursos) { return _this.data = cursos; });
                     //this._cursosService.getCursosAjax().subscribe(res => this.data = res);
                 };
                 TableDemo.prototype.ngOnInit = function () {
@@ -106,7 +108,7 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                         directives: [ng2_table_1.NG_TABLE_DIRECTIVES, ng2_bootstrap_1.PAGINATION_DIRECTIVES, common_1.NgClass, common_1.NgIf, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
                         providers: [cursos_service_1.CursosService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [cursos_service_1.CursosService])
                 ], TableDemo);
                 return TableDemo;
             })();

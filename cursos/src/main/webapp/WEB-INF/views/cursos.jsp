@@ -10,11 +10,16 @@
 	<link rel="stylesheet" href="css/estilos.css">
 
     <!-- 1. Load libraries -->
+    <script src="js/node_modules/es6-shim/es6-shim.js"></script>
     <script src="js/node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="js/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="js/node_modules/typescript/lib/typescript.js"></script>
     <script src="js/node_modules/rxjs/bundles/Rx.js"></script>
     <script src="js/node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="js/node_modules/ng2-table/ng2-table.js"></script>
+    <script src="js/node_modules/angular2/bundles/upgrade.dev.js"></script>
+    
+    
 
     <!-- 2. Configure SystemJS -->
     <script>
