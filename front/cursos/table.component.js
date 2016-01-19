@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', './nuevocurso.component', './cursos.service', 'angular2/platform/browser', 'ng2-bootstrap/ng2-bootstrap', 'ng2-table/ng2-table'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', './nuevocurso.component', 'angular2/platform/browser', 'angular2/http', 'rxjs/add/operator/map', 'ng2-bootstrap/ng2-bootstrap', 'ng2-table/ng2-table'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, nuevocurso_component_1, cursos_service_1, browser_1, ng2_bootstrap_1, ng2_table_1;
+    var core_1, common_1, nuevocurso_component_1, browser_1, http_1, ng2_bootstrap_1, ng2_table_1;
     var TableDemo;
     return {
         setters:[
@@ -21,12 +21,13 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
             function (nuevocurso_component_1_1) {
                 nuevocurso_component_1 = nuevocurso_component_1_1;
             },
-            function (cursos_service_1_1) {
-                cursos_service_1 = cursos_service_1_1;
-            },
             function (browser_1_1) {
                 browser_1 = browser_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (_1) {},
             function (ng2_bootstrap_1_1) {
                 ng2_bootstrap_1 = ng2_bootstrap_1_1;
             },
@@ -35,8 +36,8 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
             }],
         execute: function() {
             TableDemo = (function () {
-                function TableDemo(_cursosService) {
-                    this._cursosService = _cursosService;
+                function TableDemo(http) {
+                    var _this = this;
                     this.rows = [];
                     this.columns = [
                         { title: 'Titulo', name: 'titulo', sort: 'asc' },
@@ -53,12 +54,14 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                         paging: true,
                         sorting: { columns: [] }
                     };
+                    http.get('http://localhost:8080/cursos/cursos')
+                        .map(function (res) { return res.json(); })
+                        .subscribe(function (data) { return _this.data = data.cursos; });
                     this.length = this.data.length;
                 }
                 TableDemo.prototype.getCursos = function () {
-                    var _this = this;
-                    this._cursosService.getCursos().then(function (cursos) { return _this.data = cursos; });
-                    //this._cursosService.getCursosAjax().subscribe(res => this.data = res);
+                    //this._cursosService.getCursos().then(cursos => this.data = cursos);
+                    //this._cursosService.getCursosAjax();
                 };
                 TableDemo.prototype.ngOnInit = function () {
                     this.onChangeTable(this.config, null);
@@ -96,6 +99,7 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                     if (config.sorting) {
                         Object.assign(this.config.sorting, config.sorting);
                     }
+                    console.log(this.data);
                     var sortedData = this.changeSort(this.data, this.config);
                     this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
                     this.length = sortedData.length;
@@ -106,9 +110,9 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                         selector: 'table-demo',
                         templateUrl: 'templates/table.html',
                         directives: [ng2_table_1.NG_TABLE_DIRECTIVES, ng2_bootstrap_1.PAGINATION_DIRECTIVES, common_1.NgClass, common_1.NgIf, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
-                        providers: [cursos_service_1.CursosService]
+                        viewProviders: [http_1.HTTP_PROVIDERS]
                     }), 
-                    __metadata('design:paramtypes', [cursos_service_1.CursosService])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], TableDemo);
                 return TableDemo;
             })();

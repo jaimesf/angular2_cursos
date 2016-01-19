@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.angular2.cursos.dto.CursoDTO;
 import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 import com.angular2.cursos.service.CursoService;
@@ -20,7 +21,8 @@ public class CursosRestController {
 	@Autowired
 	CursoService cursoService;
 	
-	@RequestMapping(value = "/cursos", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/getcursos", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public String getCursos(Model model)
     {
     	List<Curso> cursos = cursoService.getAllCursos();
@@ -44,7 +46,7 @@ public class CursosRestController {
     }
 	
 	@RequestMapping(value = "/crearprofesor", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public String crearCurso(@RequestBody Curso curso,Model model)
+    public String crearCurso(@RequestBody CursoDTO curso,Model model)
     {
     	
     	

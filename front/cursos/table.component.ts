@@ -3,6 +3,8 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from 'angular2/common';
 import {NuevoCursoComponent} from './nuevocurso.component'
 import {CursosService} from './cursos.service'
 import {bootstrap}    from 'angular2/platform/browser'
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
+import 'rxjs/add/operator/map';
 
 
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
@@ -34,7 +36,7 @@ interface Curso {
     selector: 'table-demo',
     templateUrl: 'templates/table.html',
     directives: [NG_TABLE_DIRECTIVES, PAGINATION_DIRECTIVES, NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES],
-    providers: [CursosService]
+    viewProviders: [HTTP_PROVIDERS]
 
 
 })
@@ -49,7 +51,7 @@ export class TableDemo implements OnInit{
 
   	];
 
-  	private data:Array<Curso> =[];
+  	private data:Array<any> =[];
 
   	public page:number = 1;
   	public itemsPerPage:number = 10;
@@ -66,13 +68,20 @@ export class TableDemo implements OnInit{
 
 
 
-  	constructor(private _cursosService: CursosService) {
+  	constructor(http: Http) {
+    http.get('http://localhost:8080/cursos/getcursos')
+      // Call map on the response observable to get the parsed people object
+      .map(res => res.json())
+      // Subscribe to the observable to get the parsed people object and attach it to the
+      // component
+      .subscribe(data => this.data = data.cursos);
+
 	    this.length = this.data.length;
   	}
 
   	getCursos() {
-	    this._cursosService.getCursos().then(cursos => this.data = cursos);
-	    //this._cursosService.getCursosAjax().subscribe(res => this.data = res);
+	    //this._cursosService.getCursos().then(cursos => this.data = cursos);
+	    //this._cursosService.getCursosAjax();
 	  }
 
   	ngOnInit() {
@@ -118,7 +127,7 @@ export class TableDemo implements OnInit{
 	    if (config.sorting) {
 	      Object.assign(this.config.sorting, config.sorting);
 	    }
-
+      console.log(this.data);
 	    let sortedData = this.changeSort(this.data, this.config);
 	    this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
 	    this.length = sortedData.length;

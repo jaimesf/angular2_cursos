@@ -40,4 +40,9 @@ public class ProfesorDaoImpl implements ProfesorDao {
 
 	}
 
+	@Override
+	public Profesor selectById(long id) {
+		return entityManager.find(Profesor.class, id);
+	}
+
 }

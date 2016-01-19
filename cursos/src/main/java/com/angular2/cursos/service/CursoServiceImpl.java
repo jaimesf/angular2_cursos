@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.angular2.cursos.dto.CursoDTO;
 import com.angular2.cursos.persistence.dao.CursoDao;
 import com.angular2.cursos.persistence.dao.ProfesorDao;
 import com.angular2.cursos.persistence.model.Curso;
@@ -25,14 +26,15 @@ public class CursoServiceImpl implements CursoService{
 	}
 
 	@Override
-	public Curso createCurso() {
-		// TODO Auto-generated method stub
-		return null;
+	public Curso createCurso(CursoDTO curso) {
+		Profesor profesorElegido = profesorDao.selectById(curso.getProfesorId());
+		Curso nuevoCurso = new Curso(curso.getTitulo(),curso.getNivel(),curso.getHoras(),curso.isActivo(),profesorElegido);
+		cursoDao.insert(nuevoCurso);
+		return nuevoCurso;
 	}
 
 	@Override
 	public List<Profesor> getAllProfesores() {
-		// TODO Auto-generated method stub
 		return profesorDao.selectAll();
 	}
 
