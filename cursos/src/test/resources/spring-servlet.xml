@@ -17,10 +17,15 @@
 
 	<mvc:annotation-driven />
 
-	
+
 
 	<!-- Define el paquete donde van a estar los controllers -->
-	<context:component-scan base-package="com.cabana.controller" />
+	<context:component-scan base-package="com.angular2.cursos.controller" />
+
+	<context:component-scan base-package="com.angular2.cursos.service" />
+	
+	<context:component-scan base-package="com.angular2.cursos.persistence.dao" />
+
 
 
 	<!-- Define el archivo de propiedades de la base de datos -->
@@ -32,8 +37,6 @@
 		</property>
 	</bean>
 
-
-	<context:component-scan base-package="com.angular2.cursos.persistence.dao"/>
 
 	<bean id="entityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -67,10 +70,29 @@
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 
+	<!-- JSON Support -->
+	<bean name="viewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	<bean name="jsonTemplate"
+		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 
-	
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 
 
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/css/**" location="/angular2/css/" />
+	<mvc:resources mapping="/templates/**" location="/angular2/templates/" />
+	<mvc:resources mapping="/angular2/**" location="/angular2/" />
+	<mvc:resources mapping="/node_modules/**" location="/angular2/node_modules/" />
+	<mvc:resources mapping="/cursos/**" location="/angular2/cursos/" />
 
 
 </beans>

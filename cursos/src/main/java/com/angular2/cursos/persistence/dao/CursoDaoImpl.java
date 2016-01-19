@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.angular2.cursos.persistence.model.Curso;
+import com.angular2.cursos.persistence.model.Profesor;
 
 
 @Repository("cursoDao")
@@ -22,13 +23,16 @@ public class CursoDaoImpl implements CursoDao{
 
 	@Transactional
 	public void insert(Curso curso) {
+		Profesor toMerge = curso.getProfesor();
+		toMerge = entityManager.merge(toMerge);
+		curso.setProfesor(toMerge);
 		entityManager.persist(curso);
 	}
 
 	@Transactional
-	public List<Curso> selectAll() {
+	public List<Curso> selectByActivo(boolean activo) {
 		
-		TypedQuery<Curso> query = entityManager.createQuery("SELECT c FROM Curso c JOIN FETCH c.profesor", Curso.class);
+		TypedQuery<Curso> query = entityManager.createQuery("SELECT c FROM Curso c JOIN FETCH c.profesor where c.activo = "+activo, Curso.class);
 
 		List<Curso> cursos =query.getResultList();
 		return cursos;

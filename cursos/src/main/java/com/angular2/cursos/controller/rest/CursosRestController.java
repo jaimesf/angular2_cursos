@@ -25,7 +25,7 @@ public class CursosRestController {
 	@RequestMapping(value = "/getcursos", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public String getCursos(Model model)
     {
-    	List<Curso> cursos = cursoService.getAllCursos();
+    	List<Curso> cursos = cursoService.getCursosActivos();
     	
     	
         model.addAttribute("cursos", cursos);
@@ -49,8 +49,12 @@ public class CursosRestController {
     public String crearCurso(@RequestBody CursoDTO curso,Model model)
     {
     	
-    	
-        model.addAttribute("ok", "ok");
+    	Curso creado = cursoService.createCurso(curso);
+    	if(creado.getId()!=0){
+    		model.addAttribute("ok", true);
+    	}else{
+    		model.addAttribute("ok", false);
+    	}
         
         return "jsonTemplate";
     }

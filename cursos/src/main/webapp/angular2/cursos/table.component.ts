@@ -68,7 +68,7 @@ export class TableDemo implements OnInit{
 
 
   	constructor(http: Http) {
-    http.get('/cursos/getcursos')
+    http.get('getcursos')
       // Call map on the response observable to get the parsed people object
       .map(res => res.json())
       // Subscribe to the observable to get the parsed people object and attach it to the
@@ -93,7 +93,6 @@ export class TableDemo implements OnInit{
 	}
 
 	changePage(page:any, data:Array<any> = this.data):Array<any> {
-		console.log(page);
 	    let start = (page.page - 1) * page.itemsPerPage;
 	    let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
 	    return data.slice(start, end);
@@ -129,12 +128,11 @@ export class TableDemo implements OnInit{
 	    if (config.sorting) {
 	      Object.assign(this.config.sorting, config.sorting);
 	    }
-      console.log(this.data);
 	    let sortedData = this.changeSort(this.data, this.config);
 	    this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
 	    this.length = sortedData.length;
 		}
 
-	newCurso() {bootstrap(NuevoCursoComponent);  }
+	
 
  }

@@ -8,7 +8,7 @@ import com.angular2.cursos.persistence.model.Profesor;
 
 public interface CursoService {
 
-	public List<Curso> getAllCursos();
+	public List<Curso> getCursosActivos();
 	
 	public Curso createCurso(CursoDTO curso);
 	

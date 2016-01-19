@@ -21,8 +21,8 @@ public class CursoServiceImpl implements CursoService{
 	ProfesorDao profesorDao;
 	
 	@Override
-	public List<Curso> getAllCursos() {
-		return cursoDao.selectAll();
+	public List<Curso> getCursosActivos() {
+		return cursoDao.selectByActivo(true);
 	}
 
 	@Override

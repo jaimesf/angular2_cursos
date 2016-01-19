@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', './nuevocurso.component', 'angular2/platform/browser', 'angular2/http', 'rxjs/add/operator/map', 'ng2-bootstrap/ng2-bootstrap', 'ng2-table/ng2-table'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/add/operator/map', 'ng2-bootstrap/ng2-bootstrap', 'ng2-table/ng2-table'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, nuevocurso_component_1, browser_1, http_1, ng2_bootstrap_1, ng2_table_1;
+    var core_1, common_1, http_1, ng2_bootstrap_1, ng2_table_1;
     var TableDemo;
     return {
         setters:[
@@ -17,12 +17,6 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
             },
             function (common_1_1) {
                 common_1 = common_1_1;
-            },
-            function (nuevocurso_component_1_1) {
-                nuevocurso_component_1 = nuevocurso_component_1_1;
-            },
-            function (browser_1_1) {
-                browser_1 = browser_1_1;
             },
             function (http_1_1) {
                 http_1 = http_1_1;
@@ -54,7 +48,7 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                         paging: true,
                         sorting: { columns: [] }
                     };
-                    http.get('/cursos/getcursos')
+                    http.get('getcursos')
                         .map(function (res) { return res.json(); })
                         .subscribe(function (data) { return _this.setData(data.cursos); });
                 }
@@ -103,7 +97,6 @@ System.register(['angular2/core', 'angular2/common', './nuevocurso.component', '
                     this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
                     this.length = sortedData.length;
                 };
-                TableDemo.prototype.newCurso = function () { browser_1.bootstrap(nuevocurso_component_1.NuevoCursoComponent); };
                 TableDemo = __decorate([
                     core_1.Component({
                         selector: 'table-demo',

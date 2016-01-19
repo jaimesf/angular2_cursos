@@ -9,7 +9,7 @@ private long id;
 	private String nivel;
 	private int horas;
 	private boolean activo;
-	private int profesorId;
+	private long profesorId;
 	
 	
 	public long getId() {
@@ -42,10 +42,10 @@ private long id;
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-	public int getProfesorId() {
+	public long getProfesorId() {
 		return profesorId;
 	}
-	public void setProfesorId(int profesorId) {
+	public void setProfesorId(long profesorId) {
 		this.profesorId = profesorId;
 	}
 	

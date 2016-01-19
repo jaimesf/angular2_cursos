@@ -10,6 +10,6 @@ public interface CursoDao {
 	
 	public Curso selectById(long id);
 	
-	public List<Curso> selectAll();
+	public List<Curso> selectByActivo(boolean activo);
 	
 }

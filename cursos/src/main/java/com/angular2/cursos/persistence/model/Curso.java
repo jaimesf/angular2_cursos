@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -42,6 +43,10 @@ public class Curso implements Serializable{
 	@ManyToOne(targetEntity = Profesor.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "profesor_id")
 	private Profesor profesor;
+	
+	@Lob
+	@Column(name="documento_blob",length=10000000)
+	private byte[] documento;
 
 	
 	public Curso() {
