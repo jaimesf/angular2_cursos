@@ -62,7 +62,6 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/add/
                 };
                 TableDemo.prototype.changePage = function (page, data) {
                     if (data === void 0) { data = this.data; }
-                    console.log(page);
                     var start = (page.page - 1) * page.itemsPerPage;
                     var end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
                     return data.slice(start, end);
@@ -92,7 +91,6 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/add/
                     if (config.sorting) {
                         Object.assign(this.config.sorting, config.sorting);
                     }
-                    console.log(this.data);
                     var sortedData = this.changeSort(this.data, this.config);
                     this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
                     this.length = sortedData.length;

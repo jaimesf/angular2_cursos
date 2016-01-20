@@ -14,6 +14,13 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+/**
+ * Representa un Curso en la base de datos
+ * @author Jaime Sánchez Force
+ *
+ */
 @Entity
 @Table(name = "curso")
 public class Curso implements Serializable{
@@ -44,6 +51,10 @@ public class Curso implements Serializable{
 	@JoinColumn(name = "profesor_id")
 	private Profesor profesor;
 	
+	@Column(name = "nombre_archivo")
+	private String nombreArchivo;
+	
+	@JsonIgnore
 	@Lob
 	@Column(name="documento_blob",length=10000000)
 	private byte[] documento;

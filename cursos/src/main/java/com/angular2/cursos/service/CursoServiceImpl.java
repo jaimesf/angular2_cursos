@@ -11,6 +11,11 @@ import com.angular2.cursos.persistence.dao.ProfesorDao;
 import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 
+/**
+ * Implementacion de servicio para los cursos
+ * @author Jaime Sánchez Force
+ *
+ */
 @Service
 public class CursoServiceImpl implements CursoService{
 

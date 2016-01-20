@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Representa un profesor en la base de datos
+ * @author seJaime Sánchez Forcetag
+ *
+ */
 @Entity
 @Table(name = "profesor")
 public class Profesor implements Serializable{

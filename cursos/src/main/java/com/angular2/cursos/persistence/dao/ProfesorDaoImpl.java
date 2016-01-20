@@ -12,6 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.angular2.cursos.persistence.model.Profesor;
 
+/**
+ * Implentancion del dao de acceso a profesores en base de datos
+ * @author Jaime Sánchez Force
+ *
+ */
 @Repository("profesorDao")
 @Transactional(propagation = Propagation.REQUIRED)
 public class ProfesorDaoImpl implements ProfesorDao {

@@ -47,7 +47,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', 'ang
                     var _this = this;
                     var headers = new http_1.Headers();
                     headers.append('Content-Type', 'application/json');
-                    this.http.post('crearprofesor', JSON.stringify({ 'activo': this.activo, titulo: this.titulo, nivel: this.nivel, horas: this.horas, profesorId: this.profesorId }), { headers: headers })
+                    this.http.post('crearcurso', JSON.stringify({ 'activo': this.activo, titulo: this.titulo, nivel: this.nivel, horas: this.horas, profesorId: this.profesorId }), { headers: headers })
                         .map(function (res) { return res.json(); })
                         .subscribe(function (res) { return _this.callBackCrearProfesor(res); });
                 };

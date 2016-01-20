@@ -6,6 +6,11 @@ import com.angular2.cursos.dto.CursoDTO;
 import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 
+/**
+ * Servicio para los cursos
+ * @author Jaime Sánchez Force
+ *
+ */
 public interface CursoService {
 
 	public List<Curso> getCursosActivos();

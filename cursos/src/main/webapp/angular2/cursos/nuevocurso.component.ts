@@ -43,7 +43,7 @@ export class NuevoCursoComponent {
   	createCurso(){
   		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		this.http.post('crearprofesor', 
+		this.http.post('crearcurso', 
                        JSON.stringify({'activo': this.activo,titulo:this.titulo,nivel:this.nivel,horas:this.horas,profesorId: this.profesorId}),
                        {headers:headers})
     		.map(res => res.json())

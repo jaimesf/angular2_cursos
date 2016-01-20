@@ -1,4 +1,4 @@
-package com.angular2.cursos.controller.rest;
+package com.angular2.cursos.controller.ajax;
 
 import java.util.List;
 
@@ -15,13 +15,22 @@ import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 import com.angular2.cursos.service.CursoService;
 
+/**
+ * Controlador para servir via ajax los datos a angular 2
+ * @author Jaime Sánchez Force
+ *
+ */
 @Controller
-public class CursosRestController {
+public class CursosAjaxController {
 
 	@Autowired
 	CursoService cursoService;
 	
-	
+	/**
+	 * Obtiene los cursos activos
+	 * @param model
+	 * @return JSON de los cursos activos
+	 */
 	@RequestMapping(value = "/getcursos", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public String getCursos(Model model)
     {
@@ -33,7 +42,11 @@ public class CursosRestController {
         return "jsonTemplate";
     }
 	
-	
+	/**
+	 * Devuelve los profesores
+	 * @param model
+	 * @return JSON de los profesores dados de alta
+	 */
 	@RequestMapping(value = "/profesores", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public String getProfesores(Model model)
     {
@@ -45,7 +58,13 @@ public class CursosRestController {
         return "jsonTemplate";
     }
 	
-	@RequestMapping(value = "/crearprofesor", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	/**
+	 * Crea un curso nuevo
+	 * @param curso
+	 * @param model
+	 * @return Confirmacion via JSON
+	 */
+	@RequestMapping(value = "/crearcurso", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public String crearCurso(@RequestBody CursoDTO curso,Model model)
     {
     	

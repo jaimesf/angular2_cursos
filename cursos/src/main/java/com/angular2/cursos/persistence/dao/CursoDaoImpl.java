@@ -13,7 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 
-
+/**
+ * Implementacion de dao de acceso a cursos
+ * @author Jaime Sánchez Force
+ *
+ */
 @Repository("cursoDao")
 @Transactional(propagation = Propagation.REQUIRED)
 public class CursoDaoImpl implements CursoDao{

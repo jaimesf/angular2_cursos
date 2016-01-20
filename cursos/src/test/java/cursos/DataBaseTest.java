@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.angular2.cursos.persistence.dao.CursoDao;
@@ -16,8 +15,12 @@ import com.angular2.cursos.persistence.dao.ProfesorDao;
 import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 
+/**
+ * Test para acceso a base de datos
+ * @author Jaime Sánchez Force
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
 @ContextConfiguration({ "classpath:spring-servlet.xml" })
 public class DataBaseTest {
 

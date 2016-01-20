@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.angular2.cursos.dto.CursoDTO;
@@ -18,8 +17,12 @@ import com.angular2.cursos.persistence.model.Curso;
 import com.angular2.cursos.persistence.model.Profesor;
 import com.angular2.cursos.service.CursoService;
 
+/**
+ * Test para servicio de cursos
+ * @author Jaime Sánchez Force
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
 @ContextConfiguration({ "classpath:spring-servlet.xml" })
 public class CursoServiceTest {
 	

@@ -5,7 +5,7 @@
 	<artifactId>cursos</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cursos Maven Webapp</name>
+	<name>Cursos en angular 2 con typescript</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -61,7 +61,7 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -86,7 +86,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.0.7.Final</version>
-			<scope>runtime</scope>
 		</dependency>
 
 
@@ -104,6 +103,23 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.6.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.1.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		
+
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path-assert</artifactId>
+			<version>2.1.0</version>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 	<build>
